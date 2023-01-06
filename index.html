@@ -8,6 +8,83 @@
   
   <title>Frontend Mentor | Interactive card details form</title>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap%27">
+  <style type="text/css">
+
+    h1, span{
+      font-family: "Space Grotesk";
+    }
+
+    .container{
+      display: flex;
+      align-items: center;
+    }
+
+    .thank-you{
+      display: none;
+    }
+
+    .left{
+      width: 40%;
+    }
+
+    .right{
+      margin-left: 200px;
+    }
+
+    .card-front{
+      position: absolute;
+      margin-left: 170px;
+      top: 200px;
+    }
+
+    .card-back{
+      position: absolute;
+      margin-left: 250px;
+      top: 475px;
+    }
+
+    .card-content{
+      position: absolute;
+      margin-left: 3%;
+      top: 5%;
+      justify-content: flex-end;
+      align-self: center;
+      color: #ffffff;
+    }
+
+    .card-info{
+      position: absolute;
+      width: 500px;
+      top: 110px;
+    }
+
+    #cvv{
+      position: absolute;
+      margin-left: 350px;
+      top: 69px;
+      font-size: 24px;
+    }
+
+    #bg-left{
+      left: -10px;
+      top: 0;
+    }
+
+    .row{
+      display: flex;
+    }
+
+
+  </style>
+
+  <script type="text/javascript">
+    $('#confirm').click(function() {
+      $('.thank-you').show();
+      $('.right').hide();
+      })
+  </script>
+
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
@@ -15,33 +92,117 @@
   </style>
 </head>
 <body>
+  <div class="container">
+  <div class="left">
+    <div class="bg-left">
+      <img src="images/bg-main-desktop.png" id="bg-left">
+    </div>
+    <div class="card-front">
+      <img src="images/bg-card-front.png">
+      <div class="card-content">
+        <img src="images/card-logo.svg">
+        <div class="card-info" id="card-front">
+          <h1 id="number">0000 0000 0000 0000</h1>
+          <p id="bottom-info">
+            <span id="name">Jane Appleseed</span>
+            <span id="date">00/00</span>
+          </p>
+        </div>
+      </div>
+    </div>
 
-  0000 0000 0000 0000
-  Jane Appleseed
-  00/00
+    <div class="card-back">
+      <img src="images/bg-card-back.png">
+      <div class="card-content">
+        <p id="cvv">000</p>
+      </div>
+    </div>
+  </div>
 
-  000
+  <div class="right">
+    <div>
+      <label for="card-name">Cardholder Name</label>
+      <div>
+        <input 
+          type="text" 
+          placeholder="eg. Jane Appleseed"
+          minlength="1" 
+          id="card-name" 
+          required
+        >
+      </div>
+    </div>
 
-  Cardholder Name
-  e.g. Jane Appleseed
+    <div>
+      <label for="card-number">Card Number</label>
+      <div class="inputs">
+        <input 
+          type="text" 
+          placeholder="eg. 1234 5678 9123 0000" 
+          oninput="if(this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+          minlength="16" 
+          maxlength="16" 
+          id="card-number"
+          required
+        >
+      </div>
+    </div>
 
-  Card Number
-  e.g. 1234 5678 9123 0000
+    <div class="row">
+      
+      <div>
+      <label for="card-date">Exp. Date (MM/YY)</label>
+      <div class="inputs">
+        <input 
+          type="text" 
+          placeholder="MM"
+          oninput="if(this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+          minlength="2" 
+          maxlength="2"  
+          id="card-month" 
+          required
+        >
 
-  Exp. Date (MM/YY)
-  MM
-  YY
+        <input 
+          type="text" 
+          placeholder="YY" 
+          oninput="if(this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+          minlength="2" 
+          maxlength="2" 
+          id="card-year" 
+          required
+        >
+      </div>
+      </div>
 
-  CVC
-  e.g. 123
+      
+      <div>
+      <label for="card-cvv">CVV</label>
+      <div class="inputs">
+        <input 
+          type="text" 
+          placeholder="eg. 123"
+          oninput="if(this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+          minlength="3" 
+          maxlength="3" 
+          id="card-cvv" 
+          required
+        >
+      </div>
+    </div>
+    </div>
+    <button id="confirm">Confirm</button>
+  </div>
 
-  Confirm
+  <div class="thank-you">
+    <img src="images/icon-complete.svg">
+    <h1>Thank You!</h1>
+    <p>We've added your card details</p>
+    <button id="confirm-thank">Continue</button>
+  </div>
 
-  <!-- Completed state start -->
-
-  Thank you!
-  We've added your card details
-  Continue
+  </div>
+  
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
